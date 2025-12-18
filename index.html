@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="mode-work">
+    <!-- Background shapes -->
+    <div class="bg-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container">
+        <div class="card" id="card">
+            <div class="header">
+                <h1>
+                    <span class="header-icon">🍅</span>
+                    Pomodoro Timer
+                </h1>
+                <button class="settings-btn" id="settingsBtn" title="Настройки">⚙️</button>
+            </div>
+
+            <div class="mode-tabs">
+                <button class="mode-tab active" data-mode="work">Работа</button>
+                <button class="mode-tab" data-mode="shortBreak">Перерыв</button>
+                <button class="mode-tab" data-mode="longBreak">Длинный</button>
+            </div>
+
+            <div class="timer-section">
+                <div class="timer-ring">
+                    <svg viewBox="0 0 280 280">
+                        <circle class="ring-bg" cx="140" cy="140" r="130"></circle>
+                        <circle class="ring-progress" id="ringProgress" cx="140" cy="140" r="130"></circle>
+                    </svg>
+                    <div class="timer-content">
+                        <div class="time-display" id="timeDisplay">25:00</div>
+                        <div class="mode-indicator" id="modeIndicator">Рабочая сессия</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legacy progress bar (hidden) -->
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-icon" id="resetBtn" title="Сбросить">↺</button>
+                <button class="btn btn-primary" id="startBtn">Старт</button>
+                <button class="btn btn-icon" id="skipBtn" title="Пропустить">⏭</button>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value" id="completedCount">0</div>
+                    <div class="stat-label">Выполнено</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="totalTime">0ч 0м</div>
+                    <div class="stat-label">Всего времени</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="keyboard-hint">
+            <kbd>Space</kbd> старт/пауза · <kbd>R</kbd> сброс
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Настройки таймера</h2>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label class="setting-label">Рабочая сессия</label>
+                    <div class="setting-input">
+                        <input type="number" id="workTime" min="1" max="120" value="25">
+                        <span>минут</span>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Короткий перерыв</label>
+                    <div class="setting-input">
+                        <input type="number" id="shortBreakTime" min="1" max="30" value="5">
+                        <span>минут</span>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Длинный перерыв</label>
+                    <div class="setting-input">
+                        <input type="number" id="longBreakTime" min="1" max="60" value="15">
+                        <span>минут</span>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Сессий до длинного перерыва</label>
+                    <div class="setting-input">
+                        <input type="number" id="sessionsCount" min="1" max="10" value="4">
+                        <span>сессий</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelSettings">Отмена</button>
+                <button class="btn btn-save" id="saveSettings">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

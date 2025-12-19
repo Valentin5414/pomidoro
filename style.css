@@ -705,40 +705,437 @@ body.mode-longBreak {
     }
 }
 
-/* Responsive */
-@media (max-width: 480px) {
-    .container {
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+    body {
         padding: 1rem;
+        padding-top: env(safe-area-inset-top, 1rem);
+        padding-bottom: env(safe-area-inset-bottom, 1rem);
+    }
+    
+    .container {
+        padding: 1.5rem;
     }
     
     .card {
-        padding: 1.75rem;
-        border-radius: 24px;
+        padding: 2rem;
+        border-radius: 28px;
+    }
+    
+    .header h1 {
+        font-size: 1.75rem;
     }
     
     .timer-ring {
-        width: 240px;
-        height: 240px;
+        width: 260px;
+        height: 260px;
     }
     
     .time-display {
-        font-size: 3.25rem;
+        font-size: 3.5rem;
+    }
+    
+    .mode-tab {
+        font-size: 0.8rem;
+        padding: 0.75rem 0.5rem;
+    }
+    
+    /* Larger touch targets */
+    .btn-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 1.3rem;
+    }
+    
+    .settings-btn {
+        padding: 0.85rem;
+        font-size: 1.3rem;
+    }
+    
+    .keyboard-hint {
+        display: none;
+    }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+    body {
+        align-items: flex-start;
+        padding: 0;
+        overflow-y: auto;
+    }
+    
+    .container {
+        padding: 1rem;
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .card {
+        padding: 1.5rem;
+        border-radius: 24px;
+    }
+    
+    .header {
+        margin-bottom: 1.5rem;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+    }
+    
+    .settings-btn {
+        padding: 0.7rem;
+        font-size: 1.2rem;
+        min-width: 48px;
+        min-height: 48px;
+    }
+    
+    .mode-tabs {
+        margin-bottom: 1.5rem;
+        padding: 4px;
+        border-radius: 14px;
+    }
+    
+    .mode-tab {
+        padding: 0.7rem 0.4rem;
+        font-size: 0.75rem;
+        border-radius: 10px;
+        min-height: 44px;
+    }
+    
+    .timer-section {
+        padding: 1rem 0;
+    }
+    
+    .timer-ring {
+        width: 220px;
+        height: 220px;
+        margin-bottom: 1rem;
+    }
+    
+    .timer-ring circle {
+        stroke-width: 5;
+    }
+    
+    .time-display {
+        font-size: 2.75rem;
+    }
+    
+    .mode-indicator {
+        font-size: 0.8rem;
+        margin-top: 0.35rem;
+    }
+    
+    .controls {
+        gap: 0.75rem;
+        margin-top: 0.5rem;
     }
     
     .btn-primary {
-        padding: 1rem 2.5rem;
+        padding: 0.9rem 2rem;
+        font-size: 0.95rem;
+        border-radius: 14px;
+        min-height: 52px;
+    }
+    
+    .btn-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        min-width: 52px;
+        min-height: 52px;
     }
     
     .stats {
         gap: 0.75rem;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
     }
     
     .stat {
-        padding: 1rem;
+        padding: 1rem 0.75rem;
+        border-radius: 14px;
     }
     
     .stat-value {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+    }
+    
+    .keyboard-hint {
+        display: none;
+    }
+    
+    /* Floating shapes - smaller on mobile */
+    .shape:nth-child(1) {
+        width: 250px;
+        height: 250px;
+        top: -80px;
+        right: -80px;
+    }
+    
+    .shape:nth-child(2) {
+        width: 180px;
+        height: 180px;
+        bottom: -30px;
+        left: -30px;
+    }
+    
+    .shape:nth-child(3) {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Small phones (360px and below) */
+@media (max-width: 360px) {
+    .container {
+        padding: 0.75rem;
+    }
+    
+    .card {
+        padding: 1.25rem;
+        border-radius: 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.35rem;
+    }
+    
+    .mode-tab {
+        padding: 0.6rem 0.3rem;
+        font-size: 0.7rem;
+    }
+    
+    .timer-ring {
+        width: 190px;
+        height: 190px;
+    }
+    
+    .time-display {
+        font-size: 2.4rem;
+    }
+    
+    .mode-indicator {
+        font-size: 0.7rem;
+    }
+    
+    .btn-primary {
+        padding: 0.85rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-icon {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .stat-value {
+        font-size: 1.25rem;
+    }
+    
+    .stats {
+        gap: 0.5rem;
+    }
+    
+    .stat {
+        padding: 0.85rem 0.5rem;
+    }
+}
+
+/* Modal responsive */
+@media (max-width: 480px) {
+    .modal-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+    
+    .modal {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 24px 24px 0 0;
+        max-height: 85vh;
+        overflow-y: auto;
+        transform: translateY(100%);
+    }
+    
+    .modal-overlay.active .modal {
+        transform: translateY(0);
+    }
+    
+    .modal-header {
+        padding: 1.25rem 1.5rem;
+        position: sticky;
+        top: 0;
+        background: var(--bg-card);
+        z-index: 1;
+    }
+    
+    .modal-header h2 {
+        font-size: 1rem;
+    }
+    
+    .modal-close {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    .modal-body {
+        padding: 1.25rem 1.5rem;
+    }
+    
+    .setting-group {
+        margin-bottom: 1.25rem;
+    }
+    
+    .setting-label {
+        font-size: 0.75rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .setting-input {
+        gap: 0.75rem;
+    }
+    
+    .setting-input input {
+        width: 90px;
+        padding: 0.75rem 0.5rem;
+        font-size: 1rem;
+        min-height: 48px;
+    }
+    
+    .setting-input span {
+        font-size: 0.85rem;
+    }
+    
+    .modal-footer {
+        padding: 1rem 1.5rem;
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+        position: sticky;
+        bottom: 0;
+        background: var(--bg-card);
+    }
+    
+    .btn-secondary,
+    .btn-save {
+        padding: 0.85rem 1.25rem;
+        font-size: 0.85rem;
+        min-height: 48px;
+        border-radius: 10px;
+    }
+}
+
+/* Landscape mode on phones */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        align-items: flex-start;
+        overflow-y: auto;
+    }
+    
+    .container {
+        padding: 0.75rem 1.5rem;
+        min-height: auto;
+    }
+    
+    .card {
+        padding: 1rem 1.5rem;
+    }
+    
+    .header {
+        margin-bottom: 0.75rem;
+    }
+    
+    .mode-tabs {
+        margin-bottom: 0.75rem;
+    }
+    
+    .timer-section {
+        padding: 0.5rem 0;
+    }
+    
+    .timer-ring {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .time-display {
+        font-size: 2rem;
+    }
+    
+    .mode-indicator {
+        font-size: 0.65rem;
+    }
+    
+    .controls {
+        margin-top: 0.5rem;
+    }
+    
+    .stats {
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+    }
+    
+    .stat {
+        padding: 0.5rem;
+    }
+    
+    .stat-value {
+        font-size: 1.1rem;
+    }
+    
+    .stat-label {
+        font-size: 0.6rem;
+        margin-top: 0.25rem;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .btn-primary:hover,
+    .btn-icon:hover,
+    .settings-btn:hover,
+    .mode-tab:hover:not(.active),
+    .stat:hover {
+        transform: none;
+    }
+    
+    .btn-primary:active {
+        transform: scale(0.97);
+    }
+    
+    .btn-icon:active,
+    .settings-btn:active {
+        transform: scale(0.95);
+        background: rgba(255, 255, 255, 0.12);
+    }
+    
+    .mode-tab:active:not(.active) {
+        background: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Prevent text selection on buttons for mobile */
+@media (max-width: 768px) {
+    .btn,
+    .mode-tab,
+    .settings-btn {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
     }
 }
 
